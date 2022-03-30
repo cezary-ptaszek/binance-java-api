@@ -248,4 +248,9 @@ public class BinanceApiAsyncRestClientImpl implements BinanceApiAsyncRestClient 
   public void closeUserDataStream(String listenKey, BinanceApiCallback<Void> callback) {
     binanceApiService.closeAliveUserDataStream(listenKey).enqueue(new BinanceApiCallbackAdapter<>(callback));
   }
+
+  @Override
+  public void getCurrentAveragePrice(String symbol) {
+    binanceApiService.getCurrentAveragePrice(symbol);
+  }
 }

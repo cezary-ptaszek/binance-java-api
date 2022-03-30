@@ -311,4 +311,11 @@ public interface BinanceApiAsyncRestClient {
    * @param callback the callback that handles the response which contains a listenKey
    */
   void closeUserDataStream(String listenKey, BinanceApiCallback<Void> callback);
+
+  /**
+   * Get current average price for a symbol <code>symbol</code> (asynchronous).
+   *
+   * @param symbol ticker symbol (e.g. ETHBTC)
+   */
+  void getCurrentAveragePrice(String symbol);
 }
