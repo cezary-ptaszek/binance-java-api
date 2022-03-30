@@ -1,14 +1,7 @@
 package com.binance.api.domain.general;
 
 import com.binance.api.client.domain.OrderType;
-import com.binance.api.client.domain.general.ExchangeInfo;
-import com.binance.api.client.domain.general.FilterType;
-import com.binance.api.client.domain.general.RateLimit;
-import com.binance.api.client.domain.general.RateLimitInterval;
-import com.binance.api.client.domain.general.RateLimitType;
-import com.binance.api.client.domain.general.SymbolFilter;
-import com.binance.api.client.domain.general.SymbolInfo;
-import com.binance.api.client.domain.general.SymbolStatus;
+import com.binance.api.client.domain.general.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 
@@ -16,9 +9,7 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 /**
  * Test deserialization of exchange information.
