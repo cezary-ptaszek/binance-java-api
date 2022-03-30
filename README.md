@@ -22,6 +22,15 @@ Alternatively, you can clone this repository and run the [examples](https://gith
 ## Examples
 
 ### Getting Started
+Please see the basic [information](https://binance-docs.github.io/apidocs/#general-api-information) about api.
+
+To use the examples, you need to generate `API-KEY` and `SECRET` at [API Management](https://www.binancezh.top/en/support/faq/360002502072) and replace XXX in [`PrivateConfig`](https://github.com/joaopsilva/binance-java-api/blob/master/src/main/java/com/binance/api/examples/constants/PrivateConfig.java) with the appropriate values.
+
+```java
+public static final String API_KEY = "XXX";
+public static final String SECRET_KEY = "XXX";
+```
+
 
 There are three main client classes that can be used to interact with the API:
 
@@ -29,7 +38,7 @@ There are three main client classes that can be used to interact with the API:
 2. [`BinanceApiAsyncRestClient`](https://github.com/joaopsilva/binance-java-api/blob/master/src/main/java/com/binance/api/client/BinanceApiAsyncRestClient.java), an asynchronous/non-blocking [Binance API](https://www.binance.com/restapipub.html) client;
 3. [`BinanceApiWebSocketClient`](https://github.com/joaopsilva/binance-java-api/blob/master/src/main/java/com/binance/api/client/BinanceApiWebSocketClient.java), a data streaming client using [Binance WebSocket API](https://www.binance.com/restapipub.html#wss-endpoint).
 
-These can be instantiated through the corresponding factory method of [`BinanceApiClientFactory`](https://github.com/joaopsilva/binance-java-api/blob/master/src/main/java/com/binance/api/client/BinanceApiClientFactory.java), by passing the [security parameters](https://www.binance.com/restapipub.html#user-content-endpoint-security-type) `API-KEY` and `SECRET`, which can be created at [https://www.binance.com/userCenter/createApi.html](https://www.binance.com/userCenter/createApi.html).
+These can be instantiated through the corresponding factory method of [`BinanceApiClientFactory`](https://github.com/joaopsilva/binance-java-api/blob/master/src/main/java/com/binance/api/client/BinanceApiClientFactory.java), by passing the [security parameters](https://www.binance.com/restapipub.html#user-content-endpoint-security-type) `API-KEY` and `SECRET`.
 
 ```java
 BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance("API-KEY", "SECRET");
