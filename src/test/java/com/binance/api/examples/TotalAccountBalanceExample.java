@@ -5,6 +5,7 @@ import com.binance.api.client.BinanceApiRestClient;
 import com.binance.api.client.constant.Util;
 import com.binance.api.client.domain.account.Account;
 import com.binance.api.client.domain.account.AssetBalance;
+import com.binance.api.examples.constants.PrivateConfig;
 
 /**
  * Example how to get total of balances on your account
@@ -13,7 +14,7 @@ public class TotalAccountBalanceExample {
 
 
     public static void main(String[] args) {
-        BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance("YOUR_API_KEY", "YOUR_SECRET");
+        BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance(PrivateConfig.API_KEY, PrivateConfig.SECRET_KEY);
         BinanceApiRestClient client = factory.newRestClient();
 
         // Get account balances

@@ -3,17 +3,15 @@ package com.binance.api.examples;
 import com.binance.api.client.BinanceApiClientFactory;
 import com.binance.api.client.BinanceApiSwapRestClient;
 import com.binance.api.client.domain.account.*;
+import com.binance.api.examples.constants.PrivateConfig;
 
 import java.util.List;
 
 public class SwapEndpointExample {
 
-    public static String API_KEY = "api-key";
-    public static String SECRET_KEY = "secret-key";
-
     public static void main(String[] args) {
 
-        BinanceApiClientFactory binanceApiClientFactory = BinanceApiClientFactory.newInstance(API_KEY, SECRET_KEY);
+        BinanceApiClientFactory binanceApiClientFactory = BinanceApiClientFactory.newInstance(PrivateConfig.API_KEY, PrivateConfig.SECRET_KEY);
         BinanceApiSwapRestClient swapClient = binanceApiClientFactory.newSwapRestClient();
         List<Pool> pools = swapClient.listAllSwapPools();
         for(Pool pool:pools) {

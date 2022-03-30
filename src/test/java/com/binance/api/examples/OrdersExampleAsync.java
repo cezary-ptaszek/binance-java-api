@@ -7,6 +7,7 @@ import com.binance.api.client.domain.account.request.AllOrdersRequest;
 import com.binance.api.client.domain.account.request.CancelOrderRequest;
 import com.binance.api.client.domain.account.request.OrderRequest;
 import com.binance.api.client.domain.account.request.OrderStatusRequest;
+import com.binance.api.examples.constants.PrivateConfig;
 
 import static com.binance.api.client.domain.account.NewOrder.limitBuy;
 import static com.binance.api.client.domain.account.NewOrder.marketBuy;
@@ -17,22 +18,22 @@ import static com.binance.api.client.domain.account.NewOrder.marketBuy;
 public class OrdersExampleAsync {
 
   public static void main(String[] args) {
-    BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance("YOUR_API_KEY", "YOUR_SECRET");
+    BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance(PrivateConfig.API_KEY, PrivateConfig.SECRET_KEY);
     BinanceApiAsyncRestClient client = factory.newAsyncRestClient();
 
     // Getting list of open orders
-    client.getOpenOrders(new OrderRequest("LINKETH"), response -> System.out.println(response));
+    client.getOpenOrders(new OrderRequest("LINKETH"), System.out::println);
 
     // Get status of a particular order
     client.getOrderStatus(new OrderStatusRequest("LINKETH", 745262L),
-        response -> System.out.println(response));
+            System.out::println);
 
     // Getting list of all orders with a limit of 10
-    client.getAllOrders(new AllOrdersRequest("LINKETH").limit(10), response -> System.out.println(response));
+    client.getAllOrders(new AllOrdersRequest("LINKETH").limit(10), System.out::println);
 
     // Canceling an order
     client.cancelOrder(new CancelOrderRequest("LINKETH", 756703L),
-        response -> System.out.println(response));
+            System.out::println);
 
     // Placing a test LIMIT order
     client.newOrderTest(limitBuy("LINKETH", TimeInForce.GTC, "1000", "0.0001"),
@@ -42,7 +43,6 @@ public class OrdersExampleAsync {
     client.newOrderTest(marketBuy("LINKETH", "1000"), response -> System.out.println("Test order has succeeded."));
 
     // Placing a real LIMIT order
-    client.newOrder(limitBuy("LINKETH", TimeInForce.GTC, "1000", "0.0001"),
-        response -> System.out.println(response));
+    client.newOrder(limitBuy("LINKETH", TimeInForce.GTC, "1000", "0.0001"), System.out::println);
   }
 }

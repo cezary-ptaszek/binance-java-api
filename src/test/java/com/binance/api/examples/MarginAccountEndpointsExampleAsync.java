@@ -5,6 +5,7 @@ import com.binance.api.client.BinanceApiCallback;
 import com.binance.api.client.BinanceApiClientFactory;
 import com.binance.api.client.domain.TransferType;
 import com.binance.api.client.domain.account.MarginTransaction;
+import com.binance.api.examples.constants.PrivateConfig;
 
 /**
  * Examples on how to get margin account information asynchronously.
@@ -12,7 +13,7 @@ import com.binance.api.client.domain.account.MarginTransaction;
 public class MarginAccountEndpointsExampleAsync {
 
   public static void main(String[] args) {
-    BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance("YOUR_API_KEY", "YOUR_SECRET");
+    BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance(PrivateConfig.API_KEY, PrivateConfig.SECRET_KEY);
     BinanceApiAsyncMarginRestClient client = factory.newAsyncMarginRestClient();
 
     // Get account balances
@@ -23,9 +24,7 @@ public class MarginAccountEndpointsExampleAsync {
     });
 
     // Get list of trades
-    client.getMyTrades("NEOETH", myTrades -> {
-      System.out.println(myTrades);
-    });
+    client.getMyTrades("NEOETH", System.out::println);
 
     // Transfer, borrow, repay
     client.transfer("USDT", "1", TransferType.SPOT_TO_MARGIN, transaction -> System.out.println(transaction.getTranId()));

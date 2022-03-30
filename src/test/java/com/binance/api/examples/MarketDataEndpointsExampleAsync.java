@@ -27,28 +27,24 @@ public class MarketDataEndpointsExampleAsync {
     });
 
     // Getting latest price of a symbol (async)
-    client.get24HrPriceStatistics("NEOETH", (TickerStatistics response) -> {
-      System.out.println(response);
-    });
+    client.get24HrPriceStatistics("NEOETH", System.out::println);
 
     // Getting all latest prices (async)
-    client.getAllPrices((List<TickerPrice> response) -> {
-      System.out.println(response);
-    });
+    client.getAllPrices(System.out::println);
 
     // Getting agg trades (async)
-    client.getAggTrades("NEOETH", (List<AggTrade> response) -> System.out.println(response));
+    client.getAggTrades("NEOETH", System.out::println);
 
     // Weekly candlestick bars for a symbol
     client.getCandlestickBars("NEOETH", CandlestickInterval.WEEKLY,
-        (List<Candlestick> response) -> System.out.println(response));
+            System.out::println);
 
     // Book tickers (async)
-    client.getBookTickers(response -> System.out.println(response));
+    client.getBookTickers(System.out::println);
 
     // Exception handling
     try {
-      client.getOrderBook("UNKNOWN", 10, response -> System.out.println(response));
+      client.getOrderBook("UNKNOWN", 10, System.out::println);
     } catch (BinanceApiException e) {
       System.out.println(e.getError().getCode()); // -1121
       System.out.println(e.getError().getMsg());  // Invalid symbol
